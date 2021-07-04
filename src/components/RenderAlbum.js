@@ -16,13 +16,8 @@ export class RenderAlbum extends Component {
         const new_data = data.map((album,index) => {
             return (
              <div className="col-3 col-sm-2" key={index}>
-                 <Card>
-        <CardImg top width="100%" src={album.thumbnailUrl} />
-        <CardBody >
-          <CardTitle tag="h5" >{album.title}</CardTitle>
-        </CardBody>
-      </Card>
-            
+                 <a><img src={album.thumbnailUrl}></img></a>
+                 <p>{album.title}</p>
              </div>
             );
         });
