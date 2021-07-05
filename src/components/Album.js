@@ -8,6 +8,7 @@ export class Album extends Component {
         super(props)
     
         this.state = {
+            input : '',
              album: '',
              errorMessage: ''
         };
@@ -19,13 +20,13 @@ export class Album extends Component {
         
       HandleChange  = (event) => {
           this.setState({
-              album: event.target.value
+            input: event.target.value
           });
      }
         
       HandleSubmit = (event) => {
           event.preventDefault();
-          fetch(`https://jsonplaceholder.typicode.com/albums/${this.state.album}/photos`)
+          fetch(`https://jsonplaceholder.typicode.com/albums/${this.state.input}/photos`)
                 .then(response => {
                     if(response.ok){
                         return response.json();
@@ -44,11 +45,6 @@ export class Album extends Component {
        // clear form data after submittion
        
      }
-     HandleFocus = () =>{
-         this.setState({
-             album: ''
-         });
-     }
 
     render() {
         return (
@@ -58,7 +54,7 @@ export class Album extends Component {
                <Form>
       <FormGroup>
         <Label for="exampleEmail">Album ID</Label>
-        <Input type="text" name="album_id" id="albumId" placeholder="search by  album id" value={this.state.album} onChange={this.HandleChange} onFocus={this.HandleFocus} />
+        <Input type="text" name="album_id" id="albumId" placeholder="search by  album id" value={this.state.input} onChange={this.HandleChange}  />
       </FormGroup>
       <FormGroup>
       <button type="button" className="btn btn-primary float-right" onClick = {this.HandleSubmit}>Get Album Photos By Id</button>
