@@ -26,7 +26,7 @@ export class Album extends Component {
         
       HandleSubmit = (event) => {
           event.preventDefault();
-          fetch(`https://jsonplaceholder.typicode.com/albums/${this.state.input}/photos`)
+          fetch(`https://chalenge3.herokuapp.com/users/albums/${this.state.input}/photos`)
                 .then(response => {
                     if(response.ok){
                         return response.json();
